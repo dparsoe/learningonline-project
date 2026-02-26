@@ -31,6 +31,12 @@
             </div>
         <?php endif ?>
 
+        <?php if (isset($_GET['register'])): ?>
+            <div class="alert alert-info">
+                Account Created
+            </div>
+        <?php endif ?>
+
         <form action="_actions/login.php" method="post" class="mb-3">
             <input type="email" name="email" placeholder="Email" required class="form-control mb-2">
             <input type="password" name="password" placeholder="Password" required class="form-control mb-2">

@@ -1,10 +1,10 @@
 <?php
-session_start();
+include("vendor/autoload.php");
 
-if (!isset($_SESSION['user'])) {
-    header("location: index.php");
-    exit();
-}
+use Helpers\Auth;
+
+$user = Auth::check();
+
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +35,12 @@ if (!isset($_SESSION['user'])) {
     <div class="container py-4" style="max-width: 800px;">
         <p class="h3 mb-3">Profile</p>
         <ul class="list-group mb-3">
-            <li class="list-group-item">Name: Alice</li>
-            <li class="list-group-item">Email: alice@gmail.com</li>
-            <li class="list-group-item">Phone: 23472394</li>
-            <li class="list-group-item">Address: Some address</li>
+            <li class="list-group-item">Name: <?= $user->name ?></li>
+            <li class="list-group-item">Email: <?= $user->email ?></li>
+            <li class="list-group-item">Phone: <?= $user->phone ?></li>
+            <li class="list-group-item">Address: <?= $user->address ?></li>
         </ul>
+        <a href="admin.php">Admin</a> |
         <a href="_actions/logout.php" class="text-danger">Logout</a>
     </div>
 
