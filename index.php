@@ -37,6 +37,12 @@
             </div>
         <?php endif ?>
 
+        <?php if (isset($_GET['suspended'])): ?>
+            <div class="alert alert-danger">
+                Account Suspended
+            </div>
+        <?php endif ?>
+
         <form action="_actions/login.php" method="post" class="mb-3">
             <input type="email" name="email" placeholder="Email" required class="form-control mb-2">
             <input type="password" name="password" placeholder="Password" required class="form-control mb-2">

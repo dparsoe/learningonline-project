@@ -34,6 +34,18 @@ $user = Auth::check();
 
     <div class="container py-4" style="max-width: 800px;">
         <p class="h3 mb-3">Profile</p>
+
+        <?php if ($user->photo): ?>
+            <img src="_actions/photos/<?= $user->photo ?>" alt="" class="img-thumbnail" width="300">
+        <?php endif ?>
+
+        <form action="_actions/upload.php" method="post" class="input-group my-4" enctype="multipart/form-data">
+
+            <input type="file" name="photo" class="form-control">
+            <button class="btn btn-secondary">Upload</button>
+
+        </form>
+
         <ul class="list-group mb-3">
             <li class="list-group-item">Name: <?= $user->name ?></li>
             <li class="list-group-item">Email: <?= $user->email ?></li>
